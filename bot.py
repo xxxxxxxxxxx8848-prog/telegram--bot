@@ -119,12 +119,8 @@ async def main():
     log_activity('Starting Telegram bot...')
     
     try:
-        # Use existing session if available
-        if not os.path.exists('telegram_session.session'):
-            await client.start(phone=TELEGRAM_PHONE)
-        else:
-            # Session exists, connect without OTP
-            await client.connect()
+        # Connect using existing session
+        await client.connect()
         
         log_activity('Bot connected to Telegram')
         
