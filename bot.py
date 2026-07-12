@@ -119,14 +119,13 @@ async def main():
     log_activity('Starting Telegram bot...')
     
     try:
-        # Connect using existing session
-        await client.connect()
-        
-        log_activity('Bot connected to Telegram')
-        
-        # Listen for messages
-        log_activity('Bot is now listening for messages...')
-        await client.run_until_disconnected()
+        # Start client with session (won't ask for OTP if session exists)
+        async with client:
+            log_activity('Bot connected to Telegram')
+            
+            # Listen for messages
+            log_activity('Bot is now listening for messages...')
+            await client.run_until_disconnected()
         
     except Exception as e:
         log_activity(f'Critical error: {str(e)}')
