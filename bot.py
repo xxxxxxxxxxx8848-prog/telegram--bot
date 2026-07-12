@@ -3,8 +3,12 @@ import random
 import json
 import os
 from datetime import datetime
+from dotenv import load_dotenv
 from telethon import TelegramClient, events
 import google.generativeai as genai
+
+# Load .env file
+load_dotenv()
 
 # API Keys (ye environment variables se aayenge Railway se)
 TELEGRAM_API_ID = int(os.getenv('TELEGRAM_API_ID', ''))
